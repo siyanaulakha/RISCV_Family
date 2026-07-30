@@ -1,0 +1,29 @@
+name: RTL checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  rtl-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install RTL tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog verilator yosys make python3
+
+      - name: Run functional regressions
+        run: make test
+
+      - name: Run Verilator lint
+        run: make lint
+
+      - name: Run Yosys synthesis check
+        run: make synth

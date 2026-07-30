@@ -1,0 +1,30 @@
+name: RTL checks
+
+on:
+  push:
+    branches:
+      - main
+      - "component/**"
+      - "integration/**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  baseline-rv32i:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install RTL tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog verilator yosys
+
+      - name: Verify single-cycle RV32I baseline
+        run: |
+          make baseline-test
+          make baseline-lint
+          make baseline-synth
