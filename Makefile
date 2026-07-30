@@ -1,13 +1,14 @@
 .PHONY: all test lint synth clean \
-        baseline baseline-test baseline-lint baseline-synth
+        baseline baseline-test baseline-lint baseline-synth \
+        pipeline pipeline-test pipeline-lint pipeline-synth
 
-all: baseline
+all: baseline pipeline
 
-test: baseline-test
+test: baseline-test pipeline-test
 
-lint: baseline-lint
+lint: baseline-lint pipeline-lint
 
-synth: baseline-synth
+synth: baseline-synth pipeline-synth
 
 baseline:
 	$(MAKE) -C components/rv32i_baseline all
@@ -21,5 +22,18 @@ baseline-lint:
 baseline-synth:
 	$(MAKE) -C components/rv32i_baseline synth
 
+pipeline:
+	$(MAKE) -C components/rv32i_pipeline all
+
+pipeline-test:
+	$(MAKE) -C components/rv32i_pipeline test
+
+pipeline-lint:
+	$(MAKE) -C components/rv32i_pipeline lint
+
+pipeline-synth:
+	$(MAKE) -C components/rv32i_pipeline synth
+
 clean:
-	$(MAKE) -C components/rv32i_baseline clean
+	-$(MAKE) -C components/rv32i_baseline clean
+	-$(MAKE) -C components/rv32i_pipeline clean

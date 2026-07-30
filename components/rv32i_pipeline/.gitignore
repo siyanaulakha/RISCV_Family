@@ -1,0 +1,17 @@
+build/
+*.vcd
+*.fst
+*.jou
+*.log
+*.str
+*.wdb
+*.bit
+*.dcp
+*.runs/
+*.cache/
+*.gen/
+*.sim/
+*.ip_user_files/
+__pycache__/
+*.py[cod]
+results.txt
