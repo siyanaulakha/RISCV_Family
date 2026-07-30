@@ -1,0 +1,28 @@
+# Simulation
+*.vcd
+*.fst
+*.lxt
+*.out
+simv
+build/
+
+# Yosys
+*.json
+*.blif
+*.edif
+*.ilang
+*.yslog
+
+# Quartus generated files
+*.qws
+db/
+incremental_db/
+output_files/*.rpt
+output_files/*.summary
+
+# Editors / OS
+*~
+*.swp
+.DS_Store
+
+results/logs/
