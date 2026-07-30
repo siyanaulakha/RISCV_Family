@@ -1,0 +1,15 @@
+**/build/
+**/__pycache__/
+*.pyc
+*.vcd
+*.fst
+*.wdb
+*.jou
+*.log
+*.dcp
+*.bit
+*.sof
+*.pof
+db/
+incremental_db/
+output_files/
